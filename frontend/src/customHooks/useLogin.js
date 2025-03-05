@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { SessionContext } from '../context/SessionContext';
 export default function useLogin() {
-  const [userData, setUserData] = useState();
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const { setUserData } = useContext(SessionContext);
 
   async function onLogin(e) {
     e.preventDefault();
@@ -26,10 +26,10 @@ export default function useLogin() {
       });
 
       const data = await response.json();
-      console.log(data);
+      console.log(data.session.user);
 
       if (response.ok) {
-        setUserData(data);
+        setUserData(data.session.user);
         setMessage('Loged in successfully');
         setTimeout(() => {
           navigate('/dashboard');
@@ -45,5 +45,5 @@ export default function useLogin() {
       console.log('Error', error);
     }
   }
-  return { onLogin, userData, message };
+  return { onLogin, message };
 }

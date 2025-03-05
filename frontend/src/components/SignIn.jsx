@@ -18,16 +18,19 @@ export default function SignIn() {
               type="text"
               name="username"
               placeholder="username"
+              required
             />
             <input
               type="text"
               name="email"
               placeholder="email"
+              required
             />
             <input
               type="text"
               name="password"
               placeholder="password"
+              required
             />
             <button type="submit">Register</button>
             <span>

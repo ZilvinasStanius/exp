@@ -110,7 +110,7 @@ export async function login(req, res) {
 //SESION
 
 export async function getSessionData(req, res) {
-  if (!req.session.user.isLogged) {
+  if (!req.session.user) {
     return res.status(401).json({ message: 'Not logged in' });
   }
 

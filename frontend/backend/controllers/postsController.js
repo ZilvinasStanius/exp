@@ -1,7 +1,8 @@
+import { where } from 'sequelize';
 import JobPosts from '../models/JobPostModel.js';
 
 export async function getAllPosts(req, res) {
-  const allPosts = JobPosts.findAll();
+  const allPosts = await JobPosts.findAll();
 
   if (!allPosts) {
     return res.status(404).json({ error: 'No posts found' });
@@ -35,7 +36,9 @@ export async function updatePost(req, res) {
     }
 
     await JobPosts.update(req.body, { where: { id } });
-    res.status(200).json('Post updated');
+
+    const post = await JobPosts.findOne({ where: { id } });
+    res.status(200).json(post);
   } catch (error) {
     console.error(error);
   }

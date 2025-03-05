@@ -1,16 +1,17 @@
-import useSession from '../customHooks/useSession';
+import { useContext } from 'react';
+import { SessionContext } from '../context/SessionContext';
 
 export default function Dashboard() {
-  const { userData } = useSession();
-  console.log(userData);
-
-  if (!userData) {
-    return <div>Loading...</div>;
-  }
+  const { userData } = useContext(SessionContext);
+  // if (!userData) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <>
-      <h1>Welcome {userData.username}</h1>
+      <h1>
+        {userData ? `Welcome ${userData.username}` : 'Welcome  to job posts'}
+      </h1>
     </>
   );
 }
