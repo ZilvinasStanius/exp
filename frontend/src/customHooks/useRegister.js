@@ -18,16 +18,13 @@ export default function useRegister() {
     };
 
     try {
-      const response = await fetch(
-        'http://localhost/server/api/users/register',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(loginData),
-        }
-      );
+      const response = await fetch('http://localhost:3000/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginData),
+      });
 
       const data = await response.json();
 

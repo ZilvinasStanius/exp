@@ -15,7 +15,7 @@ export default function useAddPost() {
       salary: Number(formData.get('salary')),
     };
 
-    const promise = await fetch('http://localhost/server/api/posts/create', {
+    const promise = await fetch('http://localhost:3000/api/posts/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

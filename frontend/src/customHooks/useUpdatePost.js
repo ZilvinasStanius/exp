@@ -15,7 +15,7 @@ export default function useUpdatePost() {
     };
 
     const promise = await fetch(
-      `http://localhost/server/api/posts/updatePost/${id}`,
+      `http://localhost:3000/api/posts/updatePost/${id}`,
       {
         method: 'PUT',
         headers: {

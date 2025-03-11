@@ -3,9 +3,10 @@ import { configDbSession } from './config/setupSession.js';
 import './config/init-sequelize.js';
 import './config/sequelize.js';
 import mainRoute from './routes/mainRoute.js';
+import cors from 'cors';
 
 const app = express();
-
+app.use(cors());
 configDbSession(app);
 
 app.use(express.json());

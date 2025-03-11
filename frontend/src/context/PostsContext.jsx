@@ -7,7 +7,7 @@ export function PostProvider({ children }) {
 
   useEffect(() => {
     async function getAllPosts() {
-      const promise = await fetch('http://localhost/server/api/posts');
+      const promise = await fetch('http://localhost:3000/api/posts');
 
       const response = await promise.json();
 
